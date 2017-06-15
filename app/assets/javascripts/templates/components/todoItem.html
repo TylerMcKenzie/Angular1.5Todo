@@ -1,0 +1,22 @@
+<div class="todo-attr">
+  <button ng-class="{ 'btn-check': $ctrl.todo.completed, 'btn-x': !$ctrl.todo.completed }" type="button" ng-click="$ctrl.setStatus()">
+    <span ng-show="$ctrl.todo.completed">&#x2705;</span>
+    <span ng-show="!$ctrl.todo.completed">&#x2718;</span>
+  </button>
+</div>
+
+<div class="todo-attr">
+  <p ng-class="{ 'strikethrough': $ctrl.todo.completed }" ng-show="!$ctrl.editing" ng-click="$ctrl.editTitle()">
+    {{$ctrl.todo.getTitle()}}
+  </p>
+
+  <div ng-show="$ctrl.editing" class="todo-edit">
+    <input type="text" ng-model="$ctrl.edit">
+    <button class="btn-check" ng-click="$ctrl.saveEdit()">&#x2705;</button>
+    <button class="btn-x" ng-click="$ctrl.cancelEdit()">&#x2718;</button>
+  </div>
+</div>
+
+<div class="todo-attr todo-remove-btn">
+  <button type="button" ng-click="$ctrl.onRemoveTodo($ctrl.todo)">Remove</button>
+</div>

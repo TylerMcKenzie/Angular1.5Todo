@@ -1,0 +1,19 @@
+// Place all the styles related to the Index controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Globals
+@import "global/global.scss";
+@import "global/layouts.scss";
+
+// Settings
+@import "settings/button.scss";
+@import "settings/forms.scss";
+
+// Pages
+@import "page/index.scss";
+
+// Components
+@import "components/todoForm.scss";
+@import "components/todoItem.scss";
+@import "components/todos.scss";

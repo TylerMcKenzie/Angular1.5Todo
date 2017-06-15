@@ -1,0 +1,29 @@
+<ul class="todo-list">
+  <li>
+    <div class="todo-item">
+      <div class="todo-attr" ng-click="$ctrl.addTodosFilter('completed')">
+        Completed
+      </div>
+    </div>
+
+    <div class="todo-item">
+      <div class="todo-attr">
+        <span ng-click="$ctrl.orderBy.push('title')">
+          Title
+        </span>
+      </div>
+    </div>
+
+    <div class="todo-item">
+      <div class="todo-attr">
+        <div class="btn-container clear-todos-btn">
+          <button type="button" ng-click="$ctrl.clearCompletedTodos()">Clear Completed</button>
+        </div>
+      </div>
+    </div>
+  </li>
+  
+  <li ng-repeat="todo in $ctrl.todos track by todo.id">
+    <todo-item class="todo-item" todo="todo" on-remove-todo="$ctrl.removeTodo"></todoItem>
+  </li>
+</ul>

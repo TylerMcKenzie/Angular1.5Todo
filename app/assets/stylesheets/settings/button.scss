@@ -1,0 +1,25 @@
+.btn-container {
+  margin: 1rem 0;
+}
+
+.btn-check {
+  background-color: limegreen;
+}
+
+.btn-x {
+  background-color: red;
+}
+
+button {
+  padding: 0.5rem 0.75rem;
+  text-transform: uppercase;
+  background-color: #009999;
+  color: white;
+  font-weight: bold;
+  border: 0;
+  border-radius: 0.25rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

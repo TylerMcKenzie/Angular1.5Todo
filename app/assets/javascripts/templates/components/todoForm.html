@@ -1,0 +1,10 @@
+<form name="$ctrl.todoForm" ng-submit="$ctrl.addTodo($ctrl.todoForm.todo)">
+  <div class="form-group">
+    <label for="name">Title: </label>
+    <input type="text" ng-model="$ctrl.todoForm.todo.title" required>
+  </div>
+
+  <div class="submit">
+    <button>Add Todo</button>
+  </div>
+</form>

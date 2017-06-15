@@ -1,0 +1,27 @@
+.todo-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 1rem;
+  flex-basis: 50vh;
+}
+
+@media (max-width: 438px) {
+  .todo-form-container {
+    flex-basis: auto;
+  }
+}
+
+@media (max-height: 700px) {
+  .todo-form-container {
+    flex-basis: auto;
+  }
+}
+
+.todos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}

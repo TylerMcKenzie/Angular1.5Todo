@@ -1,0 +1,31 @@
+.todos {
+  margin: 0 1rem;
+  align-self: stretch;
+}
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    justify-content: center;
+    flex-basis: 60rem;
+    border-top: 0.15rem solid lightgrey;
+    border-left: 0.15rem solid lightgrey;
+    border-right: 0.15rem solid lightgrey;
+
+    &:last-child {
+      border-bottom: 0.15rem solid lightgrey;
+    }
+  }
+}
+
+.clear-todos-btn {
+  text-align: center;
+}
