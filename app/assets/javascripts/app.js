@@ -16,17 +16,22 @@ app.config([
         controller: 'TodoCtrl',
         controllerAs: '$ctrl',
         resolve: {
-          todos: function(Todo) {
-            return [
-              new Todo({ id: 0, title: 'task1', completed: false }),
-              new Todo({ id: 1, title: 'task2', completed: false })
-            ]
+          todos: function(TodoService, Todo) {
+            var todos = []
+            TodoService.all()
+                       .then(function(res) {
+                         res.data.map(function(todo) {
+                           todos.push(new Todo(todo))
+                         })
+                       }, function(res) {
+                          console.log(res)
+                       })
+
+            return todos
+
           }
         },
         resolveAs: 'todos'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
 
   }

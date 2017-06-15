@@ -1,6 +1,6 @@
 function TodoAPI($http) {
   function getAll() {
-    return $http.get('/todos')
+    return $http.get('/todo')
   }
 
   function updateTodo(todoId) {
