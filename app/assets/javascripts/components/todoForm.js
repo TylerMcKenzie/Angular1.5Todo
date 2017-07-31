@@ -1,8 +1,5 @@
-function TodoFormCtrl(Todo) {
+function TodoFormCtrl(Todo, TodoService) {
   var ctrl = this
-
-  var index = ctrl.todos.length
-
 
   ctrl.clearTodoForm = function() {
     ctrl.todoForm.todo = {}
@@ -11,9 +8,19 @@ function TodoFormCtrl(Todo) {
   }
 
   ctrl.addTodo = function(todo) {
-    todo.id = index++
-    ctrl.todos.push(new Todo(todo))
-    
+    var newTodo
+
+    TodoService.new(todo)
+        .then(function(res) {
+          console.log(res.data)
+          newTodo = new Todo(res.data)
+
+          ctrl.todos.push(newTodo)
+        },
+        function(err) {
+          console.log(err)
+        })
+
     ctrl.clearTodoForm()
   }
 }

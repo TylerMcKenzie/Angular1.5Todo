@@ -1,4 +1,4 @@
-app.factory('Todo', function($http) {
+app.factory('Todo', function($http, TodoService) {
   function Todo(data) {
     this.id = data.id
     this.title = data.title
@@ -9,6 +9,13 @@ app.factory('Todo', function($http) {
     if(this[attribute] !== undefined) {
       this[attribute] = newValue
 
+      TodoService.update(this.id, this)
+                 .then(function(res) {
+                   console.log(res.data)
+                 },
+                 function(err) {
+                   console.log(err)
+                 })
     } else {
       throw new Error('Attribute does not exist.')
     }
@@ -16,6 +23,10 @@ app.factory('Todo', function($http) {
 
   Todo.prototype.getTitle = function() {
     return this.title
+  }
+
+  Todo.prototype.destroy = function() {
+    TodoService.delete(this.id)
   }
 
   return Todo

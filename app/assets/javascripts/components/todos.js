@@ -9,12 +9,14 @@ function TodosCtrl() {
     }
   }
 
-  
+
 
   ctrl.clearCompletedTodos = function() {
       ctrl.todos = ctrl.todos.filter(function(todoItem) {
         if(!todoItem.completed) {
           return todoItem
+        } else {
+          todoItem.destroy()
         }
       })
     }
@@ -22,7 +24,9 @@ function TodosCtrl() {
   ctrl.removeTodo = function(todo) {
     ctrl.todos.map(function(todoItem, i) {
       if(todo.id === todoItem.id) {
-        ctrl.todos.splice(i, 1)
+        var removedTodo = ctrl.todos.splice(i, 1)[0]
+
+        removedTodo.destroy()
       }
     })
   }
