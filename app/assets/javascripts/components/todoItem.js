@@ -41,6 +41,6 @@ app.component('todoItem', {
     todo: '<',
     onRemoveTodo: '<'
   },
-  controller: TodoItemCtrl,
+  controller: ['TodoService', TodoItemCtrl],
   templateUrl: 'components/todoItem.html'
 })

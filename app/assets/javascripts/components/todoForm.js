@@ -26,6 +26,6 @@ app.component('todoForm', {
   bindings: {
     todos: '<'
   },
-  controller: TodoFormCtrl,
+  controller: ['Todo', 'TodoService', 'ActionCableChannel', TodoFormCtrl],
   templateUrl: 'components/todoForm.html'
 })

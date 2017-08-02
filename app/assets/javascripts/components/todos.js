@@ -54,6 +54,6 @@ app.component('todos', {
   bindings: {
     todos: '<',
   },
-  controller: TodosCtrl,
+  controller: ['Todo', 'ActionCableChannel', TodosCtrl],
   templateUrl: 'components/todos.html'
 })
