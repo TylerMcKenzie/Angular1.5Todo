@@ -10,10 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require cable
 //= require jquery
 //= require angular
 //= require angular-rails-templates
 //= require angular-route
+//= require angular-websocket
+//= require angular-actioncable
 
 //= require app.js
 //= require_tree ./components
@@ -21,4 +24,4 @@
 //= require_tree ./templates
 //= require_tree ./factories
 
-console.log("This application is made with Angular v1.5.8 and a Rails API")
+console.log("This application is made with Angular v1.5.8 and a Rails v5.0.3 API")

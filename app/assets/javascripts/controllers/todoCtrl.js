@@ -3,5 +3,6 @@ app.controller('TodoCtrl', [ '$scope', 'todos', 'Todo',
     var ctrl = this
 
     ctrl.todos = todos
+
   }
 ])

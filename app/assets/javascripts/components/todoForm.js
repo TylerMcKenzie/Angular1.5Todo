@@ -1,5 +1,6 @@
-function TodoFormCtrl(Todo, TodoService) {
+function TodoFormCtrl(Todo, TodoService, ActionCableChannel) {
   var ctrl = this
+
 
   ctrl.clearTodoForm = function() {
     ctrl.todoForm.todo = {}
@@ -8,21 +9,17 @@ function TodoFormCtrl(Todo, TodoService) {
   }
 
   ctrl.addTodo = function(todo) {
-    var newTodo
-
     TodoService.new(todo)
-        .then(function(res) {
-          console.log(res.data)
-          newTodo = new Todo(res.data)
-
-          ctrl.todos.push(newTodo)
-        },
-        function(err) {
-          console.log(err)
-        })
 
     ctrl.clearTodoForm()
   }
+
+  var consumer = new ActionCableChannel("TodosChannel")
+  consumer.subscribe(function(data) {
+    if(data.status === "created") {
+      ctrl.todos.push(new Todo(data.todo))
+    }
+  })
 }
 
 app.component('todoForm', {

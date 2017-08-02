@@ -1,4 +1,4 @@
-var app = angular.module('InstanTodo', ['ngRoute', 'templates'])
+var app = angular.module('InstanTodo', ['ngRoute', 'ngActionCable', 'templates'])
 
 app.run(['$http', function($http) {
   // Fix header issues with rails http
