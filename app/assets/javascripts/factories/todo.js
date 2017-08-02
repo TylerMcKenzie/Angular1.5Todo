@@ -1,4 +1,4 @@
-app.factory('Todo', function($http, TodoService) {
+app.factory('Todo', ['TodoService', function(TodoService) {
   function Todo(data) {
     this.id = data.id
     this.title = data.title
@@ -24,4 +24,4 @@ app.factory('Todo', function($http, TodoService) {
   }
 
   return Todo
-})
+}])

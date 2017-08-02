@@ -23,4 +23,4 @@ function TodoService($http) {
   }
 }
 
-app.factory('TodoService', TodoService)
+app.factory('TodoService', ['$http', TodoService])
