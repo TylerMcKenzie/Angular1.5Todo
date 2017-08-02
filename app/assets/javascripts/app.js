@@ -16,7 +16,7 @@ app.config([
         controller: 'TodoCtrl',
         controllerAs: '$ctrl',
         resolve: {
-          todos: function(TodoService, Todo) {
+          todos: [ 'TodoService','Todo', function(TodoService, Todo) {
             var todos = []
             TodoService.all()
                        .then(function(res) {
@@ -29,7 +29,7 @@ app.config([
 
             return todos
 
-          }
+          }]
         },
         resolveAs: 'todos'
       });
