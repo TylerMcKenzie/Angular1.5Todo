@@ -6,23 +6,17 @@ app.factory('Todo', function($http, TodoService) {
   }
 
   Todo.prototype.update = function(attribute, newValue) {
-    if(this[attribute] !== undefined) {
+    if(this[attribute] !== undefined && attribute !== "id") {
       this[attribute] = newValue
-
-      TodoService.update(this.id, this)
-                 .then(function(res) {
-                   console.log(res.data)
-                 },
-                 function(err) {
-                   console.log(err)
-                 })
-    } else {
-      throw new Error('Attribute does not exist.')
     }
   }
 
   Todo.prototype.getTitle = function() {
     return this.title
+  }
+
+  Todo.prototype.getCompleted = function() {
+    return this.completed
   }
 
   Todo.prototype.destroy = function() {

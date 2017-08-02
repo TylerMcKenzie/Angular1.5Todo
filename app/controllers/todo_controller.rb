@@ -5,10 +5,11 @@ class TodoController < ApplicationController
   end
 
   def new
-    @todo = Todo.new(todo_params)
+    todo = Todo.new(todo_params)
 
-    if @todo.save
-      render json: @todo
+    if todo.save
+      head :ok
+      # render json: @todo
     else
       render json: { error: "Failed to create todo." }
     end

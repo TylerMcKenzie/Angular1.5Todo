@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   post 'todos' => 'todo#new'
   put '/todos/:id' => 'todo#update'
   delete 'todos/:id' => 'todo#delete'
+
+  # Setup Action Cable
+  mount ActionCable.server => '/cable'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

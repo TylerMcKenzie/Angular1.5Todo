@@ -1,10 +1,12 @@
-function TodoItemCtrl($element) {
+function TodoItemCtrl(TodoService) {
   var ctrl = this
 
   ctrl.editing = false
 
   ctrl.setStatus = function() {
     ctrl.todo.update('completed', !ctrl.todo.completed)
+
+    TodoService.update(ctrl.todo.id, { completed: ctrl.todo.getCompleted() })
   }
 
   ctrl.openTitleEditor = function() {
@@ -23,7 +25,9 @@ function TodoItemCtrl($element) {
 
   ctrl.saveEdit = function() {
     ctrl.todo.update('title', ctrl.edit)
-    
+
+    TodoService.update(ctrl.todo.id, { title: ctrl.todo.getTitle() })
+
     ctrl.closeTitleEditor()
   }
 
