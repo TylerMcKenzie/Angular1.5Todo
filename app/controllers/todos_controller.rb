@@ -1,4 +1,5 @@
-class TodoController < ApplicationController
+class TodosController < ApplicationController
+
   def index
     @todos = Todo.all
     render json: @todos
@@ -9,7 +10,7 @@ class TodoController < ApplicationController
 
     if todo.save
       head :ok
-      # render json: @todo
+      render json: @todo
     else
       render json: { error: "Failed to create todo." }
     end
@@ -21,6 +22,7 @@ class TodoController < ApplicationController
     @todo.assign_attributes(todo_params)
 
     if @todo.save
+      head :ok
       render json: { msg: "Todo update successful." }
     else
       render json: { msg: "Error updating Todo." }
@@ -31,6 +33,7 @@ class TodoController < ApplicationController
     @todo = Todo.find(params[:id])
 
     if @todo.destroy
+      head :ok
       render json: { msg: "Todo successfully deleted." }
     else
       render json: {error: "Something broke :/"}
