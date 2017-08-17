@@ -17,6 +17,7 @@
 //= require angular-route
 //= require angular-websocket
 //= require angular-actioncable
+//= require AngularDevise
 
 //= require app.js
 //= require_tree ./components
