@@ -50,6 +50,10 @@ app.config([
       .when('/users/sign_in', {
         templateUrl: 'user/signin.html',
         controller: 'LoginCtrl'
+      })
+      .when('/users/profile', {
+        templateUrl: 'user/profile.html',
+        controller: 'ProfileCtrl'
       });
 
   }
