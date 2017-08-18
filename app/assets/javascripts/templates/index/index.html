@@ -1,8 +1,11 @@
 <div class="center-column">
   <div class="top-links">
     <a ng-href="/" target="_blank">Checkout Websockets in action!</a>
-    <div class="sign-up-link">
+    <div ng-hide="$ctrl.user" class="sign-up-link">
       <a ng-href="#/users/sign_up">Sign up</a> / <a ng-href="#/users/sign_in">Sign in</a> to have personal and collaborative Todos!
+    </div>
+    <div ng-if="$ctrl.user">
+      <a href="#/users/profile">{{$ctrl.user.email}}</a>
     </div>
   </div>
 

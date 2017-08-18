@@ -1,7 +1,7 @@
-app.controller('RegistrationCtrl', ['$http', '$scope', '$location', 'Auth', function($http, $scope, $location, Auth) {
+app.controller('RegistrationCtrl', ['$http', '$scope', '$location', 'UserSession', function($http, $scope, $location, UserSession) {
   $scope.signUp = function(form) {
-    Auth.register(form).then(function(registeredUser) {
-      $location.path('/users/profile');
+    UserSession.registerUser(form, function(user) {
+      $location.path('/')
     })
   }
 }]);

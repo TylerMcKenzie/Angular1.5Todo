@@ -1,7 +1,7 @@
-app.controller('LoginCtrl', ['$http', '$scope', '$location', 'Auth', function($http, $scope, $location, Auth) {
+app.controller('LoginCtrl', ['$http', '$scope', '$location', 'UserSession', function($http, $scope, $location, UserSession) {
   $scope.signIn = function(form) {
-    Auth.login(form).then(function(currentUser) {
-      $location.path('/users/profile');
+    UserSession.loginUser(form, function(user) {
+      $location.path('/')
     })
   }
 }])
