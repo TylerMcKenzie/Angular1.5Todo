@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814041326) do
+ActiveRecord::Schema.define(version: 20170817212734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collaborations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "collaborative_todo_list_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "collaborative_todo_lists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "collaborative_todos", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "completed"
+    t.integer  "user_id"
+    t.integer  "collaborative_todo_list_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"

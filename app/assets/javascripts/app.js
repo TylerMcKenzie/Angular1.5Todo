@@ -1,18 +1,16 @@
 var app = angular.module('InstanTodo', ['ngRoute', 'Devise', 'ngActionCable', 'templates'])
 
-app.run(['$http', '$rootScope', 'Auth', function($http, $rootScope, Auth) {
+app.run(['$http', '$rootScope', 'UserSession', function($http, $rootScope, UserSession) {
   // Fix header issues with rails http
   $http.defaults.headers.common['Accept'] = 'application/json';
   $http.defaults.headers.common['Content-Type'] = 'application/json';
 
   $rootScope.$on('$locationChangeStart', function(event) {
-
-  //   Auth.currentUser().then(function() {
-  //     alert("LOGGED IN")
-  //   }, function(err) {
-  //     console.log(err)
-  //   });
   });
+
+  if(!UserSession.exists()) {
+    UserSession.reclaimSession()
+  }
 
 }]);
 
@@ -39,17 +37,31 @@ app.config([
 
             return todos
 
+          }],
+          currentUser: ['UserSession', function(UserSession) {
+
+            if(UserSession.exists()) {
+              return UserSession.getCurrentUser()
+            } else {
+              return false;
+            }
+
           }]
-        },
-        resolveAs: 'todos'
+        }
       })
       .when('/users/sign_up', {
         templateUrl: 'user/signup.html',
-        controller: 'RegistrationCtrl'
+        controller: 'RegistrationCtrl',
+        resolve: {
+          
+        }
       })
       .when('/users/sign_in', {
         templateUrl: 'user/signin.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        resolve: {
+         
+        }
       })
       .when('/users/profile', {
         templateUrl: 'user/profile.html',
